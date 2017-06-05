@@ -22,7 +22,7 @@ layer.identities.get('1ed50b90-d070-4dff-8e17-f12816e91e88', function(err, res) 
   if (err) return console.error(err);
  
   // Identity retrieved: 
-  res.write('User: ' + res.body.display_name);
+  console.log('User: ' + res.body.display_name);
 });
 
 app.set('port', (process.env.PORT || 5000));
