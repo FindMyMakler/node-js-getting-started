@@ -1,5 +1,4 @@
 var express = require('express');
-var LayerAPI = require('layer-api');
 var app = express();
 
 app.set('port', (process.env.PORT || 5000));
