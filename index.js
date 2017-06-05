@@ -17,19 +17,3 @@ app.get('/', function(request, response) {
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
-
-// Initialize by providing your Layer credentials 
-var layer = new LayerAPI({
-  token: "API_TOKEN",
-  appId: "APP_ID"
-});
- 
-// Create a Conversation 
-layer.conversations.create({participants: ['abcd']}, function(err, res) {
-  var cid = res.body.id;
- 
-  // Send a Message 
-  layer.messages.sendTextFromUser(cid, 'abcd', 'Hello, World!', function(err, res) {
-    console.log(err || res.body);
-  });
-});
