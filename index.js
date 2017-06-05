@@ -10,17 +10,14 @@ var layer = new LayerAPI({
 
 // Create a Conversation 
 
-layer.identities.get('1ed50b90-d070-4dff-8e17-f12816e91e88', function(err, res) {
-  var uid = res.body.id;
 
-layer.conversations.create({participants: [uid]}, function(err, res) {
+layer.conversations.create({participants: ['1ed50b90-d070-4dff-8e17-f12816e91e88']}, function(err, res) {
   var cid = res.body.id;
  
   // Send a Message 
-  layer.messages.sendTextFromUser(cid, uid, 'Hello, World!', function(err, res) {
+  layer.messages.sendTextFromUser(cid, '1ed50b90-d070-4dff-8e17-f12816e91e88', 'Hello, World!', function(err, res) {
     console.log(err || res.body);
   });
-});
 });
 
 var payload = {
