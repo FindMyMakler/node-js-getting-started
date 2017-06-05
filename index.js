@@ -9,20 +9,18 @@ var layer = new LayerAPI({
 });
 
 // Create a Conversation 
-layer.conversations.create({participants: ['abcd']}, function(err, res) {
+
+layer.identities.get('1ed50b90-d070-4dff-8e17-f12816e91e88', function(err, res) {
+  var uid = res.body.id;
+
+layer.conversations.create({participants: [uid]}, function(err, res) {
   var cid = res.body.id;
  
   // Send a Message 
-  layer.messages.sendTextFromUser(cid, 'abcd', 'Hello, World!', function(err, res) {
+  layer.messages.sendTextFromUser(cid, uid, 'Hello, World!', function(err, res) {
     console.log(err || res.body);
   });
 });
-
-layer.identities.get('1ed50b90-d070-4dff-8e17-f12816e91e88', function(err, res) {
-  if (err) return console.error(err);
- 
-  // Identity retrieved: 
-  console.log('User: ' + res.body.display_name);
 });
 
 var payload = {
