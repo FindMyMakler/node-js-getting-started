@@ -18,6 +18,13 @@ layer.conversations.create({participants: ['abcd']}, function(err, res) {
   });
 });
 
+layer.identities.get('1ed50b90-d070-4dff-8e17-f12816e91e88', function(err, res) {
+  if (err) return console.error(err);
+ 
+  // Identity retrieved: 
+  console.log('User: ' + res.body.display_name);
+});
+
 app.set('port', (process.env.PORT || 5000));
 
 app.use(express.static(__dirname + '/public'));
