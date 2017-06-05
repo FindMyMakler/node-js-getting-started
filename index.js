@@ -20,8 +20,8 @@ app.listen(app.get('port'), function() {
 
 // Initialize by providing your Layer credentials 
 var layer = new LayerAPI({
-  token: API_TOKEN,
-  appId: APP_ID
+  token: "API_TOKEN",
+  appId: "APP_ID"
 });
  
 // Create a Conversation 
