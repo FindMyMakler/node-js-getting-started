@@ -16,9 +16,7 @@ layer.webhooks.register({
   events: ['message.sent'],
   url: 'https://pacific-reaches-16594.herokuapp.com/',
   secret: 'caspomc',
-  config: {
-    name: 'My sample webhook'
-  }
+ 
 }, function(err, res) {
   if (err) return console.error(err);
  
