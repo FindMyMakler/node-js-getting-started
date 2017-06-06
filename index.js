@@ -1,5 +1,4 @@
 var express = require('express');
-var LayerAPI = require('layer-api');
 var app = express();
 
 var LayerWebhooks = require('layer-webhooks');
