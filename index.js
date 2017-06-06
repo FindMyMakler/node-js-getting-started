@@ -1,7 +1,7 @@
 var express = require('express');
+var LayerWebhooks = require('layer-webhooks');
 var app = express();
 
-var LayerWebhooks = require('layer-webhooks');
 
 
 // Initialize by providing your Layer credentials 
