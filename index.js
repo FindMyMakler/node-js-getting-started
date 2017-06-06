@@ -1,5 +1,6 @@
 var express = require('express');
 var LayerAPI = require('layer-api');
+var LayerWebhooks = require('layer-webhooks');
 var app = express();
 
 // Initialize by providing your Layer credentials 
@@ -37,6 +38,28 @@ layer.announcements.send(payload, function(err, res) {
   // announcement data 
   var announcement = res.body;
 });
+
+ 
+// Initialize by providing your Layer credentials 
+var layer = new LayerWebhooks({
+    token: "vnsELsfceQQBFo7jshxzbBOKmWOLxE4J6dNBR8V0q4XpfoZu",
+    appId: "layer:///apps/staging/2c96c436-44b0-11e7-9f2f-b79ffcf05b7b"
+});
+ 
+// Register a webhook 
+layer.webhooks.register({
+  events: ['message.sent'],
+  url: 'https://pacific-reaches-16594.herokuapp.com/',
+  secret: 'caspomc',
+  config: {
+    name: 'My sample webhook'
+  }
+}, function(err, res) {
+  if (err) return console.error(err);
+ 
+  // Webhook registered 
+});
+
 
 app.set('port', (process.env.PORT || 5000));
 
