@@ -41,13 +41,13 @@ layer.announcements.send(payload, function(err, res) {
 
  
 // Initialize by providing your Layer credentials 
-var layer = new LayerWebhooks({
+var layer1 = new LayerWebhooks({
     token: "vnsELsfceQQBFo7jshxzbBOKmWOLxE4J6dNBR8V0q4XpfoZu",
     appId: "layer:///apps/staging/2c96c436-44b0-11e7-9f2f-b79ffcf05b7b"
 });
  
-// Register a webhook 
-layer.webhooks.register({
+// Register a webhook
+layer1.webhooks.register({
   events: ['message.sent'],
   url: 'https://pacific-reaches-16594.herokuapp.com/',
   secret: 'caspomc',
