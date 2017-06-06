@@ -11,17 +11,6 @@ var layer = new LayerWebhooks({
     appId: "layer:///apps/staging/2c96c436-44b0-11e7-9f2f-b79ffcf05b7b"
 });
 
-// Register a webhook 
-layer.webhooks.register({
-  events: ['message.sent'],
-  url: 'https://pacific-reaches-16594.herokuapp.com/',
-  secret: 'caspomc',
- 
-}, function(err, res) {
-  if (err) return console.error(err);
- 
-  // Webhook registered 
-});
 
 app.set('port', (process.env.PORT || 5000));
 
