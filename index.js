@@ -2,6 +2,14 @@ var express = require('express');
 
 var app = express();
 
+var airbrake = require('airbrake').createClient(
+  '145767', // Project ID
+  'e850a39806d481159bcb3c551382c470' // Project key
+);
+airbrake.handleExceptions();
+
+throw new Error('I am an uncaught exception');
+
 
 var redis = require('redis').createClient(process.env.REDIS_URL);
 var queue = require('kue').createQueue({
