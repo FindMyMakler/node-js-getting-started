@@ -23,7 +23,7 @@ var webhook = {
  
 // Register a webhook 
 lws.register({
-  secret: 'my secret',
+  secret: 'caspomc',
   url: 'https://pacific-reaches-16594.herokuapp.com/',
   hooks: [webhook]
 });
