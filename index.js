@@ -1,16 +1,32 @@
 var express = require('express');
-var LayerWebhooks = require('layer-webhooks');
+
 var app = express();
 
 
-// Initialize by providing your Layer credentials 
-var layer = new LayerWebhooks({
-    token: "vnsELsfceQQBFo7jshxzbBOKmWOLxE4J6dNBR8V0q4XpfoZu",
-    appId: "layer:///apps/staging/2c96c436-44b0-11e7-9f2f-b79ffcf05b7b"
+var redis = require('redis').createClient(process.env.REDIS_URL);
+var queue = require('kue').createQueue({
+  redis: process.env.REDIS_URL
+});
+ 
+var WebhooksServices = require('layer-webhooks-services');
+var lws = new WebhooksServices({
+  token: process.env."vnsELsfceQQBFo7jshxzbBOKmWOLxE4J6dNBR8V0q4XpfoZu",
+  appId: process.env."layer:///apps/staging/2c96c436-44b0-11e7-9f2f-b79ffcf05b7b",
+  redis: redis
 });
 
-var Request = require('./lib/webhook');
-
+var webhook = {
+  name: 'Webhook Example',  // An arbitrary name for your webhook 
+  path: '/', // Your server URL path for the webhook 
+  events: ['message.sent']  // Events this webhook is listening to 
+};
+ 
+// Register a webhook 
+lws.register({
+  secret: 'my secret',
+  url: 'https://pacific-reaches-16594.herokuapp.com/',
+  hooks: [webhook]
+});
 
 app.set('port', (process.env.PORT || 5000));
 
