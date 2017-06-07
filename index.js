@@ -9,6 +9,20 @@ var express = require('express');
 	 appId: 'layer:///apps/staging/2c96c436-44b0-11e7-9f2f-b79ffcf05b7b'
  });
  
+ // Register a webhook 
+ layer.webhooks.register({
+   events: ['message.sent'],
+   url: 'https://mydomain.com/mywebhooks/messages-sent',
+   secret: 'Frodo is a Dodo',
+   config: {
+     name: 'My sample webhook'
+   }
+ }, function(err, res) {
+   if (err) return console.error(err);
+ 
+   // Webhook registered 
+ });
+ 
  app.set('port', (process.env.PORT || 5000));
 
 app.use(express.static(__dirname + '/public'));
