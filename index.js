@@ -1,6 +1,4 @@
-
 var LayerWebhooks = require('layer-webhooks');
-
 
 // Initialize by providing your Layer credentials 
 var layer = new LayerWebhooks({
