@@ -12,7 +12,7 @@ var express = require('express');
  // Register a webhook 
  layer.webhooks.register({
    events: ['message.sent'],
-   url: 'https://mydomain.com/mywebhooks/messages-sent',
+   url: 'https://pacific-reaches-16594.herokuapp.com/',
    secret: 'Frodo is a Dodo',
    config: {
      name: 'My sample webhook'
