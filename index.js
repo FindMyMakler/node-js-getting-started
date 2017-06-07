@@ -1,7 +1,5 @@
-var express = require('express');
-var LayerWebhooks = require('layer-webhooks');
-var app = express();
 
+var LayerWebhooks = require('layer-webhooks');
 
 
 // Initialize by providing your Layer credentials 
@@ -14,20 +12,4 @@ layer.webhooks.list(function(err, res) {
   if (err) return console.error(err);
  
   var webhooks = res.body;
-});
-
-app.set('port', (process.env.PORT || 5000));
-
-app.use(express.static(__dirname + '/public'));
-
-// views is directory for all template files
-app.set('views', __dirname + '/views');
-app.set('view engine', 'ejs');
-
-app.get('/', function(request, response) {
-  response.render('pages/index');
-});
-
-app.listen(app.get('port'), function() {
-  console.log('Node app is running on port', app.get('port'));
 });
