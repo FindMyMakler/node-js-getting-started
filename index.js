@@ -3,6 +3,11 @@ var express = require('express');
  var LayerWebhooks = require('layer-webhooks');
  var app = express();
  
+ // Initialize by providing your Layer credentials 
+ var layer = new LayerWebhooks({
+   token: API_TOKEN,
+   appId: APP_ID
+ });
  
  app.set('port', (process.env.PORT || 5000));
 
